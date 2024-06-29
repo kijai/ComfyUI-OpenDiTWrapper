@@ -5,3 +5,5 @@ diffusers
 transformers
 rotary_embedding_torch
 bs4
+ftfy
+omegaconf
