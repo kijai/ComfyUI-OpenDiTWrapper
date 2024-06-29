@@ -1,0 +1,634 @@
+{
+  "last_node_id": 37,
+  "last_link_id": 80,
+  "nodes": [
+    {
+      "id": 10,
+      "type": "DownloadAndLoadOpenSoraModel",
+      "pos": [
+        560,
+        620
+      ],
+      "size": {
+        "0": 315,
+        "1": 82
+      },
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "opendit_model",
+          "type": "OPENDITMODEL",
+          "links": [
+            74
+          ],
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "DownloadAndLoadOpenSoraModel"
+      },
+      "widgets_values": [
+        "hpcai-tech/OpenSora-STDiT-v3",
+        "bf16"
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 29,
+      "type": "LoadAndResizeImage",
+      "pos": [
+        570,
+        909
+      ],
+      "size": {
+        "0": 310.76898193359375,
+        "1": 618
+      },
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            56,
+            68
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "mask",
+          "type": "MASK",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "width",
+          "type": "INT",
+          "links": null,
+          "shape": 3,
+          "slot_index": 2
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadAndResizeImage"
+      },
+      "widgets_values": [
+        "ComfyUI_temp_mkxxn_00006_ (3).png",
+        true,
+        480,
+        480,
+        1,
+        true,
+        32,
+        "alpha",
+        "image"
+      ]
+    },
+    {
+      "id": 3,
+      "type": "VHS_VideoCombine",
+      "pos": [
+        2311,
+        669
+      ],
+      "size": [
+        535.1393432617188,
+        819.1393432617188
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 71
+        },
+        {
+          "name": "audio",
+          "type": "VHS_AUDIO",
+          "link": null
+        },
+        {
+          "name": "meta_batch",
+          "type": "VHS_BatchManager",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Filenames",
+          "type": "VHS_FILENAMES",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VHS_VideoCombine"
+      },
+      "widgets_values": {
+        "frame_rate": 16,
+        "loop_count": 0,
+        "filename_prefix": "Open-Sora-PAB",
+        "format": "video/h264-mp4",
+        "pix_fmt": "yuv420p",
+        "crf": 19,
+        "save_metadata": true,
+        "pingpong": false,
+        "save_output": false,
+        "videopreview": {
+          "hidden": false,
+          "paused": false,
+          "params": {
+            "filename": "Open-Sora-PAB_00002.mp4",
+            "subfolder": "",
+            "type": "temp",
+            "format": "video/h264-mp4"
+          }
+        }
+      }
+    },
+    {
+      "id": 11,
+      "type": "OpenDiTConditioning",
+      "pos": [
+        1292,
+        931
+      ],
+      "size": {
+        "0": 372.82965087890625,
+        "1": 375.42889404296875
+      },
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "opendit_t5_encoder",
+          "type": "OPENDITT5",
+          "link": 14,
+          "slot_index": 0
+        },
+        {
+          "name": "opendit_ref",
+          "type": "OPENDITREF",
+          "link": 70,
+          "slot_index": 1
+        }
+      ],
+      "outputs": [
+        {
+          "name": "opendit_cond",
+          "type": "OPENDITCOND",
+          "links": [
+            75
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "OpenDiTConditioning"
+      },
+      "widgets_values": [
+        "video of a fire elemental",
+        "",
+        6.5,
+        2.5,
+        false
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 34,
+      "type": "DownloadAndLoadOpenSoraVAE",
+      "pos": [
+        564,
+        756
+      ],
+      "size": {
+        "0": 315,
+        "1": 82
+      },
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "opendit_vae",
+          "type": "VAE",
+          "links": [
+            69,
+            76
+          ],
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "DownloadAndLoadOpenSoraVAE"
+      },
+      "widgets_values": [
+        "hpcai-tech/OpenSora-VAE-v1.2",
+        "bf16"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 36,
+      "type": "OpenSoraEncodeReference",
+      "pos": [
+        940,
+        1038
+      ],
+      "size": {
+        "0": 315,
+        "1": 102
+      },
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "opendit_vae",
+          "type": "VAE",
+          "link": 69,
+          "slot_index": 0
+        },
+        {
+          "name": "ref_image",
+          "type": "IMAGE",
+          "link": 68
+        }
+      ],
+      "outputs": [
+        {
+          "name": "opendit_ref",
+          "type": "OPENDITREF",
+          "links": [
+            70
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "OpenSoraEncodeReference"
+      },
+      "widgets_values": [
+        "first",
+        0
+      ]
+    },
+    {
+      "id": 35,
+      "type": "OpenSoraDecode",
+      "pos": [
+        2045,
+        668
+      ],
+      "size": {
+        "0": 229.20001220703125,
+        "1": 46
+      },
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 78
+        },
+        {
+          "name": "opendit_vae",
+          "type": "VAE",
+          "link": 77,
+          "slot_index": 1
+        }
+      ],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": [
+            71
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "OpenSoraDecode"
+      },
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 20,
+      "type": "GetImageSizeAndCount",
+      "pos": [
+        1402,
+        800
+      ],
+      "size": {
+        "0": 210,
+        "1": 86
+      },
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 56
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "480 width",
+          "type": "INT",
+          "links": [
+            79
+          ],
+          "shape": 3,
+          "slot_index": 1
+        },
+        {
+          "name": "480 height",
+          "type": "INT",
+          "links": [
+            80
+          ],
+          "shape": 3,
+          "slot_index": 2
+        },
+        {
+          "name": "1 count",
+          "type": "INT",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "GetImageSizeAndCount"
+      }
+    },
+    {
+      "id": 14,
+      "type": "DownloadAndLoadOpenDiTT5Model",
+      "pos": [
+        940,
+        911
+      ],
+      "size": {
+        "0": 315,
+        "1": 82
+      },
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "opendit_t5_encoder",
+          "type": "OPENDITT5",
+          "links": [
+            14
+          ],
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "DownloadAndLoadOpenDiTT5Model"
+      },
+      "widgets_values": [
+        "city96/t5-v1_1-xxl-encoder-bf16",
+        "bf16"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 37,
+      "type": "OpenDiTSampler",
+      "pos": [
+        1695,
+        669
+      ],
+      "size": [
+        317.4000244140625,
+        290
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "opendit_model",
+          "type": "OPENDITMODEL",
+          "link": 74
+        },
+        {
+          "name": "opendit_vae",
+          "type": "VAE",
+          "link": 76
+        },
+        {
+          "name": "opendit_cond",
+          "type": "OPENDITCOND",
+          "link": 75
+        },
+        {
+          "name": "width",
+          "type": "INT",
+          "link": 79,
+          "widget": {
+            "name": "width"
+          },
+          "slot_index": 3
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "link": 80,
+          "widget": {
+            "name": "height"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "links": [
+            78
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "opendit_vae",
+          "type": "VAE",
+          "links": [
+            77
+          ],
+          "shape": 3,
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "OpenDiTSampler"
+      },
+      "widgets_values": [
+        48,
+        426,
+        240,
+        1086502333760372,
+        "fixed",
+        25,
+        7,
+        24,
+        false
+      ]
+    }
+  ],
+  "links": [
+    [
+      14,
+      14,
+      0,
+      11,
+      0,
+      "OPENDITT5"
+    ],
+    [
+      56,
+      29,
+      0,
+      20,
+      0,
+      "IMAGE"
+    ],
+    [
+      68,
+      29,
+      0,
+      36,
+      1,
+      "IMAGE"
+    ],
+    [
+      69,
+      34,
+      0,
+      36,
+      0,
+      "VAE"
+    ],
+    [
+      70,
+      36,
+      0,
+      11,
+      1,
+      "OPENDITREF"
+    ],
+    [
+      71,
+      35,
+      0,
+      3,
+      0,
+      "IMAGE"
+    ],
+    [
+      74,
+      10,
+      0,
+      37,
+      0,
+      "OPENDITMODEL"
+    ],
+    [
+      75,
+      11,
+      0,
+      37,
+      2,
+      "OPENDITCOND"
+    ],
+    [
+      76,
+      34,
+      0,
+      37,
+      1,
+      "VAE"
+    ],
+    [
+      77,
+      37,
+      1,
+      35,
+      1,
+      "VAE"
+    ],
+    [
+      78,
+      37,
+      0,
+      35,
+      0,
+      "LATENT"
+    ],
+    [
+      79,
+      20,
+      1,
+      37,
+      3,
+      "INT"
+    ],
+    [
+      80,
+      20,
+      2,
+      37,
+      4,
+      "INT"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.8264462809917354,
+      "offset": {
+        "0": -463.19354248046875,
+        "1": -467.433349609375
+      }
+    }
+  },
+  "version": 0.4
+}
