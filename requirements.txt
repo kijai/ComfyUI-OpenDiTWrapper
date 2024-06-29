@@ -1,0 +1,7 @@
+numpy
+timm
+accelerate
+diffusers
+transformers
+rotary_embedding_torch
+bs4
