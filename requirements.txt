@@ -7,3 +7,5 @@ rotary_embedding_torch
 bs4
 ftfy
 omegaconf
+sentencepiece
+protobuf
