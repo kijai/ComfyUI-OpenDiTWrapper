@@ -1,6 +1,11 @@
 # WORK IN PROGRESS
 
-![image](https://github.com/kijai/ComfyUI-OpenDiTWrapper/assets/40791699/1b839a4b-7c84-4176-a743-feadba238410)
+https://github.com/kijai/ComfyUI-OpenDiTWrapper/assets/40791699/1cb3aa06-1576-43ad-a01e-f5a63f59127d
+
+
+https://github.com/kijai/ComfyUI-OpenDiTWrapper/assets/40791699/422565ae-aea9-43a7-b9d5-a8a8e7963141
+
+
 
 Tested to work in Linux, and on Windows with current ComfyUI portable (pytorch ):
 
