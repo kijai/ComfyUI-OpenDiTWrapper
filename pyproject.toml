@@ -1,0 +1,15 @@
+[project]
+name = "comfyui-openditwrapper"
+description = "Wrapper nodes for OpenDiT: [a/OpenDiT](https://github.com/NUS-HPC-AI-Lab/OpenDiT/), supports Open-Sora t2i and i2i"
+version = "1.0.0"
+license = "LICENSE"
+dependencies = ["numpy", "timm", "accelerate", "diffusers", "transformers", "rotary_embedding_torch", "bs4", "ftfy", "omegaconf", "sentencepiece", "protobuf"]
+
+[project.urls]
+Repository = "https://github.com/kijai/ComfyUI-OpenDiTWrapper"
+#  Used by Comfy Registry https://comfyregistry.org
+
+[tool.comfy]
+PublisherId = ""
+DisplayName = "ComfyUI-OpenDiTWrapper"
+Icon = ""
